@@ -1,0 +1,17 @@
+{
+  "name": "@recallbox/mcp",
+  "version": "0.1.0",
+  "description": "Model Context Protocol (MCP) server for RecallBox personal memory",
+  "main": "index.js",
+  "scripts": {
+    "start": "python recallbox_mcp.py"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "recallbox",
+    "ai-memory"
+  ],
+  "author": "RecallBox Community",
+  "license": "MIT"
+}

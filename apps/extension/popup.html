@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Save to RecallBox</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <span class="dot"></span>
+      <span class="title">RecallBox</span>
+    </div>
+    <div id="status-pill" class="status-pill online">Local Ready</div>
+  </div>
+
+  <div class="content">
+    <div class="field-group">
+      <label for="page-title">Title</label>
+      <input type="text" id="page-title" placeholder="Page or resource title" />
+    </div>
+
+    <div class="field-group">
+      <label for="page-url">URL</label>
+      <input type="text" id="page-url" readonly />
+    </div>
+
+    <div class="field-group">
+      <label for="user-why">Why are you saving this? <span class="optional">(optional)</span></label>
+      <textarea id="user-why" rows="2" placeholder="e.g. try this on the VPS, benchmark against Redis..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="tags-input">Tags <span class="optional">(comma-separated)</span></label>
+      <input type="text" id="tags-input" placeholder="docker, devops, research" />
+      <div id="suggested-tags" class="tag-chips"></div>
+    </div>
+
+    <div class="checkbox-group">
+      <label class="custom-checkbox">
+        <input type="checkbox" id="remind-me" />
+        <span class="checkmark"></span>
+        Remind me to revisit this
+      </label>
+    </div>
+
+    <div id="message-bar" class="message-bar hidden"></div>
+
+    <div class="actions">
+      <button id="save-btn" class="primary-btn">
+        <span id="save-btn-text">Save to Memory</span>
+        <span class="shortcut">↵</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

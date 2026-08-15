@@ -1,0 +1,27 @@
+{
+  "name": "recallbox-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RecallBox: A local-first personal memory system. Never lose something you wanted to come back to.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "bun --cwd apps/web dev",
+    "build:web": "bun --cwd apps/web build",
+    "build:ext": "bun --cwd apps/extension build",
+    "mcp": "bun --cwd packages/mcp start"
+  },
+  "keywords": [
+    "recallbox",
+    "local-first",
+    "memory",
+    "mcp",
+    "knowledge-graph",
+    "semantic-search",
+    "second-brain"
+  ],
+  "author": "RecallBox Community",
+  "license": "MIT"
+}

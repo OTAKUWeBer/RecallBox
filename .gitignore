@@ -1,0 +1,91 @@
+# ==========================================
+# RecallBox Git Ignore Rules
+# ==========================================
+
+# Environment variables & Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Python Virtual Environments
+.venv/
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Node / Bun
+node_modules/
+.bun/
+dist/
+build/
+.next/
+out/
+*.local
+*.tsbuildinfo
+.turbo/
+.eslintcache
+
+# RecallBox SQLite, storage & exports
+data/
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+test_*.db*
+*.log
+recallbox.db
+recallbox.db-journal
+recallbox.db-wal
+recallbox.db-shm
+recallbox-export*.zip
+uploads/
+attachments/
+
+# Test coverage & caches
+.coverage
+htmlcov/
+.pytest_cache/
+coverage/
+
+# IDE, OS & Editor artifacts
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/

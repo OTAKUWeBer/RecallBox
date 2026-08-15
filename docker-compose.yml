@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: recallbox-backend
+    restart: unless-stopped
+    ports:
+      # Secure default: bind only to local loopback (127.0.0.1) to prevent LAN exposure.
+      # To intentionally expose to LAN/Home server, change to "0.0.0.0:8765:8765" and set RECALLBOX_API_KEY.
+      - "127.0.0.1:8765:8765"
+    environment:
+      - RECALLBOX_HOST=0.0.0.0
+      - RECALLBOX_PORT=8765
+      - RECALLBOX_AI_PROVIDER=local
+    volumes:
+      - recallbox_data:/app/backend/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8765/api/v1/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.web
+    container_name: recallbox-web
+    restart: unless-stopped
+    ports:
+      # Secure default: bind only to local loopback (127.0.0.1).
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  recallbox_data:
+    driver: local
