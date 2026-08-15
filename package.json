@@ -2,7 +2,7 @@
   "name": "recallbox-monorepo",
   "version": "0.1.0",
   "private": true,
-  "description": "A local-first personal memory system that remembers not just what you saved, but why.",
+  "description": "Local-first personal memory system that remembers why you saved something — with hybrid search, knowledge graphs, browser capture, CLI, and MCP.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OTAKUWeBer/RecallBox.git"

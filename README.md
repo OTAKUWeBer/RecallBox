@@ -4,7 +4,7 @@
 
 > **Never lose something you wanted to come back to.**
 
-**RecallBox is an open-source, local-first personal memory system for everything you discover, decide, and research online.**
+**Local-first personal memory system that remembers why you saved something — with hybrid search, knowledge graphs, browser capture, CLI, and MCP.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg?logo=python&logoColor=white)](https://python.org)
