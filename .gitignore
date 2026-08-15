@@ -47,6 +47,8 @@ venv.bak/
 # Node / Bun
 node_modules/
 .bun/
+bun.lock
+bun.lockb
 dist/
 build/
 .next/
