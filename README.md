@@ -11,59 +11,61 @@
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-61DAFB.svg?logo=react&logoColor=black)](https://reactjs.org)
 [![Protocol: MCP](https://img.shields.io/badge/Protocol-Model%20Context%20Protocol%20(MCP)-8B5CF6.svg)](https://modelcontextprotocol.io)
-[![Telemetry](https://img.shields.io/badge/Telemetry-0%25%20(Local%20Only)-10B981.svg)](#-privacy--data-ownership)
+[![Privacy: Local-First](https://img.shields.io/badge/Privacy-Local--First%20%26%20Private-10B981.svg)](#-privacy--data-ownership)
 
 </div>
 
 ---
 
-## 💡 What is RecallBox?
+### 💡 Why RecallBox?
+
+**Bookmarks remember *what* you saved. RecallBox helps you remember *why* you saved it.**
 
 Every day, you discover valuable insights across the web:
-- A GitHub repository with an elegant architecture or monitoring pipeline
-- A Reddit thread solving a subtle database locking issue
-- A technical article on Docker networking or vector search
-- An architecture decision, benchmark result, or code snippet
+- **Save a GitHub repository** with an interesting architecture or monitoring pipeline.
+- **Save a Reddit discussion** solving a subtle database locking issue.
+- **Save an article or benchmark** you want to test on your own machine.
+- **Save a technical decision** along with your original reasoning.
 
-You think: *"I'll come back to this later."*  
-Then you forget. Weeks later, you vaguely remember: *"There was that tool for PostgreSQL metrics..."* but browser bookmarks only know **what URL** you saved, not **why** you saved it, what research trail you were on, or what you intended to do with it.
-
-**RecallBox solves this problem.** It captures what you discover alongside your original intent, reconstructs your research trails without AI hallucinations, organizes memories in an interactive Knowledge Graph, and makes everything instantly retrievable via hybrid lexical + semantic search—all stored 100% locally on your computer with **$0 hosting cost**.
+Weeks later, search or ask: *"Why did I save this?"*  
+RecallBox reconstructs your factual research session ($\pm 24\text{h}$ temporal cluster), preserves your original intent, and links related memories in an interactive Knowledge Graph—all stored locally on your device with **$0 hosting cost**.
 
 ---
 
 ## 🎯 Who is it for?
 
-- **Software Engineers & Architects**: Capture repositories, documentation, benchmarks, and architectural decisions without losing context.
+- **Software Engineers & Architects**: Capture repositories, documentation, benchmarks, and decisions without losing context.
 - **Researchers & Students**: Organize research papers, cross-reference articles, and trace multi-day discovery trails.
-- **Privacy-Conscious Users**: Keep your second brain on your own hardware without subscriptions, accounts, or cloud lock-in.
-- **AI Power Users**: Connect RecallBox directly to Claude Desktop, Cursor, or your local LLM using the Model Context Protocol (MCP).
+- **Privacy-Conscious Users**: Keep your personal second brain on your own hardware without subscriptions, mandatory cloud accounts, or lock-in.
+- **AI Power Users**: Connect RecallBox directly to Claude Desktop, Cursor, or local LLMs using the Model Context Protocol (MCP).
 
 ---
 
 ## ✨ Key Features (Built & Verified)
 
-- 🔒 **100% Local-First Storage**: Powered by embedded SQLite (WAL mode) and FTS5 full-text indexing. No mandatory server or cloud account required.
+- 🔒 **Local-First SQLite Storage**: Embedded SQLite with WAL mode and FTS5 full-text indexing. No mandatory server or cloud account required.
 - ⚡ **Sub-Second Capture**: Save pages, selected text, or notes via the Chromium browser extension, terminal CLI, or Web UI.
 - ❓ **Context Reconstruction ("Why did I save this?")**: Reconstructs your factual research session ($\pm 24\text{h}$ temporal cluster) and intent trail with zero AI hallucination.
 - 🔍 **Hybrid Lexical & Semantic Search**: Combines SQLite FTS5 (BM25) text ranking, local dense vector cosine similarity, Reciprocal Rank Fusion (RRF), recency decay, and importance weighting.
 - 🕸️ **Interactive Knowledge Graph**: Explore associative relationship edges (`related_to`, `supports`, `contradicts`, `part_of`, `follow_up_to`) across your memories.
 - ⏰ **Actionable Follow-Ups**: Schedule reminders (`Try locally`, `Read docs`, `Benchmark`) so saved ideas don't get lost in a digital hoard.
 - 🤖 **AI is Optional**: Works 100% offline out-of-the-box using built-in heuristic sentence extraction and local feature hashing. Pluggable adapters available for local **Ollama** or **OpenAI-compatible** endpoints.
-- 🔌 **Model Context Protocol (MCP)**: Native stdio JSON-RPC server (`recallbox-mcp`) allowing AI assistants to query your memory vault securely.
+- 🔌 **Model Context Protocol (MCP)**: Native stdio JSON-RPC server (`packages/mcp`) allowing AI assistants to query your memory vault securely.
 - 📦 **Complete Export & Import**: Export your entire vault anytime as a downloadable ZIP containing individual Markdown files with YAML frontmatter, JSON dumps, and graph data. Import existing bookmarks from Chrome, Brave, Safari, Edge, or Firefox.
 
 ---
 
 ## 🔒 Privacy & Data Ownership
 
+RecallBox is **local-first and private by default**. No hosted account or mandatory cloud service is required.
+
 | Aspect | Behavior in RecallBox |
 | :--- | :--- |
-| **Where data is stored** | Stored exclusively on your local machine in `data/recallbox.db` and `data/auth_token`. |
-| **Telemetry & Analytics** | **0% Telemetry**. No analytics SDKs, no tracking pixels, no telemetry pings. |
-| **Third-Party Services** | By default, **none**. RecallBox operates completely offline without external network connections. |
+| **Where data is stored** | Stored locally on your machine in `data/recallbox.db` and `data/auth_token`. |
+| **Telemetry & Analytics** | **0% Telemetry**. No analytics SDKs, no tracking pixels, no telemetry beacons. |
+| **Local Operation** | Core functionality (creating notes, searching, context reconstruction, export) runs locally without external servers. |
 | **URL Captures** | When you save a URL, your local backend issues an outbound HTTP request directly to that public webpage to extract metadata. Hop-by-hop SSRF protection blocks private network scanning. |
-| **Cloud AI (Optional)** | If and only if you explicitly provide an `OPENAI_API_KEY`, prompt text and search queries are sent over TLS to your configured endpoint. |
+| **Cloud AI (Optional)** | If and only if you explicitly configure an external AI provider (e.g. `OPENAI_API_KEY`), prompt text and search queries are sent over TLS to that specific endpoint. |
 | **Data Backup** | Simply copy `data/recallbox.db` or click **Export ZIP** in the Privacy Center to get standard Markdown files. |
 | **Complete Deletion** | You can permanently purge all database records and indices via the Privacy Center or by deleting the `data/` directory. |
 
@@ -111,7 +113,7 @@ Then you forget. Weeks later, you vaguely remember: *"There was that tool for Po
 
 ```bash
 git clone https://github.com/OTAKUWeBer/RecallBox.git
-cd recallbox
+cd RecallBox
 docker compose up -d
 ```
 - **Web UI**: Open [http://localhost:3000](http://localhost:3000)
@@ -147,7 +149,7 @@ python -m uvicorn app.main:app --reload --port 8765
 
 #### 2. Web Frontend Setup
 ```bash
-# In a new terminal window:
+# In a new terminal window from repository root:
 bun install
 bun dev:web
 ```
@@ -176,7 +178,7 @@ Add this to your `claude_desktop_config.json`:
     "recallbox": {
       "command": "python",
       "args": [
-        "/absolute/path/to/recallbox/packages/mcp/recallbox_mcp.py"
+        "/absolute/path/to/RecallBox/packages/mcp/recallbox_mcp.py"
       ]
     }
   }
@@ -263,6 +265,8 @@ recallbox/
 ├── docker-compose.yml     # Production single-command deployment
 ├── LICENSE                # MIT License
 ├── SECURITY.md            # Vulnerability reporting guidelines
+├── CONTRIBUTING.md        # Local development and pull request guide
+├── CODE_OF_CONDUCT.md     # Contributor Covenant v2.1
 └── README.md
 ```
 
@@ -277,7 +281,7 @@ recallbox/
 
 <details>
 <summary><strong>Does my data ever leave my computer?</strong></summary>
-<p>By default, 0 bytes leave your machine. Your database is stored locally in <code>data/recallbox.db</code>. If you save a URL, RecallBox fetches that public page to extract its text. If you choose to configure a cloud AI provider (e.g. OpenAI), prompts are sent over TLS to that specific endpoint.</p>
+<p>Most operations (notes, search, context reconstruction, export) run locally. When you save an external URL, RecallBox fetches that public page to extract its text. If you choose to configure a cloud AI provider (e.g. OpenAI), prompts are sent over TLS to that specific endpoint.</p>
 </details>
 
 <details>
@@ -314,6 +318,18 @@ pytest -v backend/tests/
 # Build frontend production bundle with TypeScript checks
 bun --cwd apps/web build
 ```
+
+---
+
+## 📄 Documentation Links
+
+- [Architecture & Search Fusion](docs/ARCHITECTURE.md)
+- [Model Context Protocol (MCP) Guide](docs/MCP_GUIDE.md)
+- [Browser Extension Setup](docs/EXTENSION_GUIDE.md)
+- [Self-Hosting & Docker Guide](docs/SELF_HOSTING.md)
+- [Security Policy](SECURITY.md)
+- [Contributing Guide](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ---
 
