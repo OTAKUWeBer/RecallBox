@@ -273,30 +273,25 @@ recallbox/
 
 ## ❓ Frequently Asked Questions (FAQ)
 
-<details>
-<summary><strong>Does RecallBox require an API key or paid subscription?</strong></summary>
-<p>No. RecallBox is 100% free and open source. The default configuration uses embedded SQLite, local FTS5 search, and built-in offline sentence extraction requiring zero external tokens or paid APIs.</p>
-</details>
+### Does RecallBox require an API key or paid subscription?
 
-<details>
-<summary><strong>Does my data ever leave my computer?</strong></summary>
-<p>Your stored data remains local by default. Saving a remote URL requires RecallBox to fetch that URL, and optional cloud AI providers can receive data when explicitly configured.</p>
-</details>
+No. RecallBox is open source and works out of the box with local SQLite storage, local FTS5 search, and built-in offline sentence extraction. You only need external providers if you intentionally configure optional cloud AI support.
 
-<details>
-<summary><strong>How do I back up my memories?</strong></summary>
-<p>You can click <strong>Export ZIP</strong> in the Privacy Center or make a copy of the <code>data/recallbox.db</code> file. The ZIP export produces standard Markdown files with YAML frontmatter that can be read by Obsidian, Notion, or any text editor.</p>
-</details>
+### Does my data ever leave my computer?
 
-<details>
-<summary><strong>How do I completely delete all my data?</strong></summary>
-<p>Go to the <strong>Privacy Center</strong> in the Web UI, click <strong>Purge All Data</strong>, and type <code>PERMANENTLY PURGE ALL DATA</code> to confirm. Alternatively, stop the backend and delete the <code>data/</code> folder.</p>
-</details>
+Your stored memories stay local by default. Saving a remote URL requires RecallBox to fetch that public webpage so metadata can be extracted. If you explicitly configure an external AI provider, prompts and search data may be sent to that provider over TLS.
 
-<details>
-<summary><strong>What happens if I lose my local auth token?</strong></summary>
-<p>The auth token is stored in <code>data/auth_token</code>. If deleted while the backend is stopped, a fresh secure token is automatically generated on next startup. The local Web UI auto-syncs with the backend over loopback.</p>
-</details>
+### How do I back up my memories?
+
+Use the **Export ZIP** option in the Privacy Center, or copy the local database file at `data/recallbox.db` to another location. The ZIP export creates plain Markdown files with YAML frontmatter that can be opened in Obsidian, Notion, or any text editor.
+
+### How do I completely delete all my data?
+
+Open the **Privacy Center** in the Web UI and click **Purge All Data**, then enter `PERMANENTLY PURGE ALL DATA` to confirm. You can also stop the backend and delete the `data/` folder directly.
+
+### What happens if I lose my local auth token?
+
+The token is stored in `data/auth_token`. If you delete it while the backend is stopped, a fresh secure token is generated automatically on the next startup, and the local Web UI reconnects over loopback.
 
 ---
 
