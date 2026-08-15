@@ -112,8 +112,7 @@ RecallBox is **local-first**. No hosted account or mandatory third-party service
 ### Option A: Run with Docker Compose (Fastest)
 
 ```bash
-git clone https://github.com/OTAKUWeBer/RecallBox.git
-cd RecallBox
+git clone https://github.com/OTAKUWeBer/RecallBox.git && cd RecallBox
 docker compose up -d
 ```
 - **Web UI**: Open [http://localhost:3000](http://localhost:3000)
