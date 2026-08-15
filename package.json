@@ -2,7 +2,15 @@
   "name": "recallbox-monorepo",
   "version": "0.1.0",
   "private": true,
-  "description": "RecallBox: A local-first personal memory system. Never lose something you wanted to come back to.",
+  "description": "A local-first personal memory system that remembers not just what you saved, but why.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OTAKUWeBer/RecallBox.git"
+  },
+  "homepage": "https://github.com/OTAKUWeBer/RecallBox",
+  "bugs": {
+    "url": "https://github.com/OTAKUWeBer/RecallBox/issues"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -16,11 +24,20 @@
   "keywords": [
     "recallbox",
     "local-first",
+    "personal-knowledge-management",
+    "knowledge-management",
+    "privacy",
+    "ai",
     "memory",
+    "second-brain",
+    "sqlite",
+    "fastapi",
+    "react",
+    "typescript",
+    "python",
     "mcp",
-    "knowledge-graph",
-    "semantic-search",
-    "second-brain"
+    "browser-extension",
+    "opensource"
   ],
   "author": "RecallBox Community",
   "license": "MIT"

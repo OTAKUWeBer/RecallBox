@@ -49,7 +49,7 @@ RecallBox reconstructs your factual research session ($\pm 24\text{h}$ temporal 
 - 🔍 **Hybrid Lexical & Semantic Search**: Combines SQLite FTS5 (BM25) text ranking, local dense vector cosine similarity, Reciprocal Rank Fusion (RRF), recency decay, and importance weighting.
 - 🕸️ **Interactive Knowledge Graph**: Explore associative relationship edges (`related_to`, `supports`, `contradicts`, `part_of`, `follow_up_to`) across your memories.
 - ⏰ **Actionable Follow-Ups**: Schedule reminders (`Try locally`, `Read docs`, `Benchmark`) so saved ideas don't get lost in a digital hoard.
-- 🤖 **AI is Optional**: Works 100% offline out-of-the-box using built-in heuristic sentence extraction and local feature hashing. Pluggable adapters available for local **Ollama** or **OpenAI-compatible** endpoints.
+- 🤖 **AI is Optional**: Runs locally out-of-the-box using built-in heuristic sentence extraction and local feature hashing. Pluggable adapters are available for local **Ollama** or **OpenAI-compatible** endpoints.
 - 🔌 **Model Context Protocol (MCP)**: Native stdio JSON-RPC server (`packages/mcp`) allowing AI assistants to query your memory vault securely.
 - 📦 **Complete Export & Import**: Export your entire vault anytime as a downloadable ZIP containing individual Markdown files with YAML frontmatter, JSON dumps, and graph data. Import existing bookmarks from Chrome, Brave, Safari, Edge, or Firefox.
 
@@ -57,14 +57,14 @@ RecallBox reconstructs your factual research session ($\pm 24\text{h}$ temporal 
 
 ## 🔒 Privacy & Data Ownership
 
-RecallBox is **local-first and private by default**. No hosted account or mandatory cloud service is required.
+RecallBox is **local-first**. No hosted account or mandatory third-party service is required.
 
 | Aspect | Behavior in RecallBox |
 | :--- | :--- |
 | **Where data is stored** | Stored locally on your machine in `data/recallbox.db` and `data/auth_token`. |
 | **Telemetry & Analytics** | **0% Telemetry**. No analytics SDKs, no tracking pixels, no telemetry beacons. |
-| **Local Operation** | Core functionality (creating notes, searching, context reconstruction, export) runs locally without external servers. |
-| **URL Captures** | When you save a URL, your local backend issues an outbound HTTP request directly to that public webpage to extract metadata. Hop-by-hop SSRF protection blocks private network scanning. |
+| **Local Operation** | Most functionality runs locally: creating notes, searching, context reconstruction, reminders, and export do not require external services. |
+| **URL Captures** | Saving a remote URL requires an outbound request to that public webpage so RecallBox can extract metadata. Hop-by-hop SSRF protection blocks private network scanning. |
 | **Cloud AI (Optional)** | If and only if you explicitly configure an external AI provider (e.g. `OPENAI_API_KEY`), prompt text and search queries are sent over TLS to that specific endpoint. |
 | **Data Backup** | Simply copy `data/recallbox.db` or click **Export ZIP** in the Privacy Center to get standard Markdown files. |
 | **Complete Deletion** | You can permanently purge all database records and indices via the Privacy Center or by deleting the `data/` directory. |
@@ -281,7 +281,7 @@ recallbox/
 
 <details>
 <summary><strong>Does my data ever leave my computer?</strong></summary>
-<p>Most operations (notes, search, context reconstruction, export) run locally. When you save an external URL, RecallBox fetches that public page to extract its text. If you choose to configure a cloud AI provider (e.g. OpenAI), prompts are sent over TLS to that specific endpoint.</p>
+<p>Your stored data remains local by default. Saving a remote URL requires RecallBox to fetch that URL, and optional cloud AI providers can receive data when explicitly configured.</p>
 </details>
 
 <details>
